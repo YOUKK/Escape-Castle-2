@@ -39,13 +39,13 @@ public class MonsterMove : MonoBehaviour
         Vector2 waypointDir = (waypoints[currentWaypoint].position - transform.position).normalized;
         //이동
         transform.Translate(waypointDir * monsterSpeed * Time.deltaTime);
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 
         //좌우 반전
         if (lastPos.x > transform.position.x) SP.flipX = true;
         else if (lastPos.x < transform.position.x) SP.flipX = false;
         lastPos = transform.position;
->>>>>>> MonsterMove
+//>>>>>>> MonsterMove
     }
 }
