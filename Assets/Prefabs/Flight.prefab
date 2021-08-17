@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4667984220154991496}
   - component: {fileID: 1640463026050454351}
   - component: {fileID: 1300611900471348866}
+  - component: {fileID: 6252053504149953140}
   m_Layer: 0
   m_Name: Flight
   m_TagString: Untagged
@@ -151,3 +152,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6252053504149953140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667984220154991497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0757bc2c93fb38d4b82e5993e2051bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  monsterSpeed: 4
