@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
+    SpriteRenderer SP;
+
+    Vector2 lastPos;
+
     int currentWaypoint;
+
+    bool isPlayerInSight;
 
     [SerializeField]
     private Transform[] waypoints;
@@ -14,7 +20,7 @@ public class MonsterMove : MonoBehaviour
 
     void Start()
     {
-        
+        SP = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -24,7 +30,7 @@ public class MonsterMove : MonoBehaviour
 
     void Move()
     {
-        if (Vector2.Distance(waypoints[currentWaypoint].position, transform.position) < 0.05f)
+        if (Vector2.Distance(waypoints[currentWaypoint].position, transform.position) < 0.02f)
         {
             //waypoint 설정
             currentWaypoint = (currentWaypoint + 1) % waypoints.Length;
@@ -33,6 +39,13 @@ public class MonsterMove : MonoBehaviour
         Vector2 waypointDir = (waypoints[currentWaypoint].position - transform.position).normalized;
         //이동
         transform.Translate(waypointDir * monsterSpeed * Time.deltaTime);
-        //test
+<<<<<<< HEAD
+=======
+
+        //좌우 반전
+        if (lastPos.x > transform.position.x) SP.flipX = true;
+        else if (lastPos.x < transform.position.x) SP.flipX = false;
+        lastPos = transform.position;
+>>>>>>> MonsterMove
     }
 }
