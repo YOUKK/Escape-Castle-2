@@ -33,5 +33,6 @@ public class MonsterMove : MonoBehaviour
         Vector2 waypointDir = (waypoints[currentWaypoint].position - transform.position).normalized;
         //이동
         transform.Translate(waypointDir * monsterSpeed * Time.deltaTime);
+        //test
     }
 }
