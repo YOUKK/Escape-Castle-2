@@ -39,7 +39,7 @@ public class MonsterViewAngle : MonoBehaviour
             Transform _targetTf = _target[i].transform;
             if(_targetTf.name == "Player")
             {
-                Vector2 _dir = (_targetTf.position - transform.position).normalized;
+                Vector2 _dir = (_targetTf.position - transform.position).normalized; //타겟쪽으로의 방향벡터
                 float _angle = Vector2.Angle(_dir, transform.right);
 
                 if(_angle < viewAngle * 0.5f)
