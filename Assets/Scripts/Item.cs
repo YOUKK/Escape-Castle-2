@@ -21,11 +21,11 @@ public class Item : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag.Equals("Player"))
-		{
+		//if (collision.gameObject.tag.Equals("Player"))
+		//{
 			Debug.Log(collision.name + "enter");
             pickUpText.gameObject.SetActive(true);
-		}
+		//}
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
