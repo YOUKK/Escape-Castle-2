@@ -32,7 +32,7 @@ public class MonsterViewAngle : MonoBehaviour
         Debug.DrawRay(transform.position, leftMBound, Color.green);
         Debug.DrawRay(transform.position, rightBound, Color.green);
 
-        Collider2D[] _target = Physics2D.OverlapCircleAll(transform.position, viewDistance, targetLayer);
+        Collider[] _target = Physics.OverlapSphere(transform.position, viewDistance, targetLayer);
 
         for (int i = 0; i < _target.Length; i++)
         {
@@ -53,7 +53,7 @@ public class MonsterViewAngle : MonoBehaviour
                             Debug.DrawRay(transform.position, _dir, Color.yellow);
                         }
                     }
-                }    
+                }
             }
         }
     }
