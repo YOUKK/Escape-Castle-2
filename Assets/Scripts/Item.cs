@@ -23,6 +23,7 @@ public class Item : MonoBehaviour
 	{
 		if (collision.gameObject.tag.Equals("Player"))
 		{
+			Debug.Log(collision.name + "enter");
             pickUpText.gameObject.SetActive(true);
 		}
 	}
@@ -31,6 +32,7 @@ public class Item : MonoBehaviour
 	{
 		if (collision.gameObject.tag.Equals("Player"))
 		{
+			Debug.Log(collision.name + "exit");
 			pickUpText.gameObject.SetActive(false);
 		}
 	}
