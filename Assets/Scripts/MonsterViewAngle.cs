@@ -8,6 +8,8 @@ public class MonsterViewAngle : MonoBehaviour
     [SerializeField] private float viewDistance; //시야거리
     [SerializeField] private LayerMask targetLayer; // 플레이어 레이어를 감지
 
+    [SerializeField] Transform playerTf;
+
     void Start()
     {
         
@@ -18,43 +20,59 @@ public class MonsterViewAngle : MonoBehaviour
         View();
     }
 
-    private Vector2 BoundaryAngle(float angle)
+    /*private Vector2 BoundaryAngle(float angle)
     {
         angle += transform.eulerAngles.y;
         return new Vector2(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle*Mathf.Deg2Rad));
-    }
+    }*/
 
     void View()
     {
-        Vector2 leftMBound = BoundaryAngle(-viewAngle * 0.5f);
-        Vector2 rightBound = BoundaryAngle(viewAngle * 0.5f);
+        /*Collider2D[] t_cols = Physics2D.OverlapCircleAll(transform.position, viewDistance, targetLayer);
 
-        Debug.DrawRay(transform.position, leftMBound, Color.green);
-        Debug.DrawRay(transform.position, rightBound, Color.green);
-
-        Collider[] _target = Physics.OverlapSphere(transform.position, viewDistance, targetLayer);
-
-        for (int i = 0; i < _target.Length; i++)
+        if(t_cols.Length > 0)
         {
-            Transform _targetTf = _target[i].transform;
-            if(_targetTf.name == "Player")
-            {
-                Vector2 _dir = (_targetTf.position - transform.position).normalized; //타겟쪽으로의 방향벡터
-                float _angle = Vector2.Angle(_dir, transform.right);
+            Debug.Log("ddd");
+            Transform t_tfPlayer = t_cols[0].transform;
 
-                if(_angle < viewAngle * 0.5f)
+            Vector2 t_direction = (t_tfPlayer.position - transform.position).normalized;
+            float t_angle = Vector2.Angle(t_direction, transform.right);
+            if (t_angle < viewAngle * 0.5f)
+            {
+                if (Physics.Raycast(transform.position, t_direction, out RaycastHit t_hit, viewDistance))
                 {
-                    RaycastHit hit;
-                    if(Physics.Raycast(transform.position, _dir, out hit, viewDistance))
+                    if (t_hit.transform.name == "Player")
                     {
-                        if (hit.transform.name == "Player")
-                        {
-                            Debug.Log("In Sight");
-                            Debug.DrawRay(transform.position, _dir, Color.yellow);
-                        }
+                        Debug.Log("DKDKDKDK");
+                        Debug.DrawRay(transform.position, t_direction, Color.yellow);
                     }
                 }
             }
+        }*/
+
+        /*Vector2 _dir = (playerTf.position - transform.position).normalized;
+
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, _dir, viewDistance);
+        if (hit.transform.CompareTag("Player"))
+        {
+            Debug.Log("In Sight");
+            Debug.DrawRay(transform.position, playerTf.position, Color.yellow);
+        }*/
+
+        Vector2 dir = playerTf.position - transform.position;
+        //Debug.DrawRay(transform.position, dir, Color.yellow);
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dir.normalized, viewDistance);
+        if (rayHit.collider != null)
+        {
+            if (rayHit.collider.name == "Player")
+            {
+                Debug.Log(rayHit.collider.name);
+                Debug.DrawRay(transform.position, dir, Color.green);
+                MonsterMove.isPlayerInSight = true;
+            }
+            else
+                Debug.Log(rayHit.collider.name);
         }
     }
 }
