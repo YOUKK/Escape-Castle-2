@@ -161,5 +161,4 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 512
-  playerTf: {fileID: 8157163882076021464, guid: e9a4a20e00d0d644a900c65e14864a50,
-    type: 3}
+  playerTf: {fileID: 0}
