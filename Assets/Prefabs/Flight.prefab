@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4667984220154991496}
   - component: {fileID: 1300611900471348866}
   - component: {fileID: 6252053504149953140}
-  - component: {fileID: 5148908481825633967}
   - component: {fileID: 2368502918074907114}
   m_Layer: 0
   m_Name: Flight
@@ -145,22 +144,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   monsterSpeed: 4
---- !u!58 &5148908481825633967
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4667984220154991497}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!114 &2368502918074907114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +161,5 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 512
+  playerTf: {fileID: 8157163882076021464, guid: e9a4a20e00d0d644a900c65e14864a50,
+    type: 3}
