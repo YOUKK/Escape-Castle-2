@@ -8,7 +8,7 @@ public class MonsterViewAngle : MonoBehaviour
     [SerializeField] private float viewDistance; //시야거리
     [SerializeField] private LayerMask targetLayer; // 플레이어 레이어를 감지
 
-    [SerializeField] Transform playerTf;
+    [SerializeField] public GameObject playerTf;
 
     void Start()
     {
@@ -60,19 +60,16 @@ public class MonsterViewAngle : MonoBehaviour
             Debug.DrawRay(transform.position, playerTf.position, Color.yellow);
         }*/
 
-        Vector2 dir = playerTf.position - transform.position;
+        Vector2 dir = playerTf.transform.position - transform.position;
         //Debug.DrawRay(transform.position, dir, Color.yellow);
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dir.normalized, viewDistance);
         if (rayHit.collider != null)
         {
             if (rayHit.collider.name == "Player")
             {
-                Debug.Log(rayHit.collider.name);
                 Debug.DrawRay(transform.position, dir, Color.green);
                 MonsterMove.isPlayerInSight = true;
             }
-            else
-                Debug.Log(rayHit.collider.name);
         }
     }
 }
