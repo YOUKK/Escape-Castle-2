@@ -70,6 +70,7 @@ public class MonsterViewAngle : MonoBehaviour
                 Debug.DrawRay(transform.position, dir, Color.green);
                 MonsterMove.isPlayerInSight = true;
             }
+            else MonsterMove.isPlayerInSight = false;
         }
     }
 }

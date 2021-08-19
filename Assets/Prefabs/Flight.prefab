@@ -143,6 +143,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  playerWaypoint: {fileID: 0}
   monsterSpeed: 4
 --- !u!114 &2368502918074907114
 MonoBehaviour:
