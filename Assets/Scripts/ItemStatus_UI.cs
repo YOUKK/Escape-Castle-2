@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ItemStatus_UI : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+	private List<ItemList> itemList;
 
-    void Update()
-    {
-        
-    }
+	void Start()
+	{
+		itemList = new List<ItemList>();
+	}
+
+	public void AddItem(ItemList item)
+	{
+		itemList.Add(item);
+	}
 }
