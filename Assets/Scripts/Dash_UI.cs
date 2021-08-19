@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DashUI : MonoBehaviour
+public class Dash_UI : MonoBehaviour
 {
     // dash
     [SerializeField]
@@ -38,7 +38,7 @@ public class DashUI : MonoBehaviour
         GaugeUpdate();
     }
 
-    private void DecreaseDash(int count)
+    public void DecreaseDash(int count)
 	{
         dashUsed = true;
         currentDashRechargeTime = 0;
@@ -79,5 +79,10 @@ public class DashUI : MonoBehaviour
     private void GaugeUpdate()
 	{
         dashBarImage.fillAmount = (float)currentDash / dash;
+	}
+
+    public int GetCurrentDash()
+	{
+        return currentDash;
 	}
 }

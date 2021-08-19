@@ -24,12 +24,14 @@ public class PlayerController : MonoBehaviour
 	private Animator theAnimator;
 	private BoxCollider2D theBoxCollider2D;
 	public LayerMask theLayerMask;
+	private Dash_UI theDashUI;
 
 	void Start()
 	{
 		theSpriteRenderer = GetComponent<SpriteRenderer>();
 		theAnimator = GetComponent<Animator>();
 		theBoxCollider2D = GetComponent<BoxCollider2D>();
+		theDashUI = FindObjectOfType<Dash_UI>();
 
 		// 초기화
 		currentSpeed = walkSpeed;
@@ -44,11 +46,11 @@ public class PlayerController : MonoBehaviour
 	// 달리기 시도
 	private void TryRun()
 	{
-		if (Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetKey(KeyCode.LeftShift) && (theDashUI.GetCurrentDash() > 0))
 		{
 			Running();
 		}
-		if (Input.GetKeyUp(KeyCode.LeftShift))
+		if (Input.GetKeyUp(KeyCode.LeftShift) || (theDashUI.GetCurrentDash() <= 0))
 		{
 			RunningCancel();
 		}
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
 		isRun = true;
 		currentSpeed = runSpeed;
 		theAnimator.SetBool("isRun", true);
+		theDashUI.DecreaseDash(2);
 	}
 
 	// 달리기 취소
