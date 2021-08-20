@@ -9,6 +9,7 @@ public class MonsterViewAngle : MonoBehaviour
     [SerializeField] private LayerMask targetLayer; // 플레이어 레이어를 감지
 
     [SerializeField] public GameObject playerTf;
+    [SerializeField] private int chasingTime;
 
     void Start()
     {
@@ -67,10 +68,17 @@ public class MonsterViewAngle : MonoBehaviour
         {
             if (rayHit.collider.name == "Player")
             {
+                StopAllCoroutines();
                 Debug.DrawRay(transform.position, dir, Color.green);
                 MonsterMove.isPlayerInSight = true;
             }
-            else MonsterMove.isPlayerInSight = false;
+            else StartCoroutine(ChaseCoroutine());
         }
+    }
+
+    IEnumerator ChaseCoroutine()
+    {
+        yield return new WaitForSeconds(chasingTime);
+        MonsterMove.isPlayerInSight = false;
     }
 }

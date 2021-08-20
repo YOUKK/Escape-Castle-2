@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MonsterMove : MonoBehaviour
 {
+    static public bool isPlayerInSight;
+
     SpriteRenderer SP;
 
     Vector2 lastPos;
 
     int currentWaypoint;
-
-    static public bool isPlayerInSight;
 
     [SerializeField]
     private Transform[] waypoints;
@@ -63,9 +63,4 @@ public class MonsterMove : MonoBehaviour
         else if (lastPos.x < transform.position.x) SP.flipX = false;
         lastPos = transform.position;
     }
-
-    /*IEnumerator ChaseCoroutain()
-    {
-        return
-    }*/
 }
