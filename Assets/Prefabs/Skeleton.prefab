@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5985702008619469050}
   - component: {fileID: 5985702008619469049}
-  - component: {fileID: 5985702008619469051}
+  - component: {fileID: 6574281446032868891}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5985702008619469051
+--- !u!95 &6574281446032868891
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
