@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemList
+public class ItemList : ScriptableObject
 {
+	public string itemName;
 	public ItemType itemtype;
+	public Sprite itemImage;
 
 	public enum ItemType
 	{

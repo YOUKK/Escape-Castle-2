@@ -10,7 +10,9 @@ public class Item : MonoBehaviour
     [SerializeField]
     Text pickUpText;
 
-    void Start()
+	ItemStatus itemstatus;
+
+	void Start()
     {
         pickUpText.gameObject.SetActive(false);
     }
@@ -26,7 +28,7 @@ public class Item : MonoBehaviour
 	{
 		if (collision.gameObject.tag.Equals("Player"))
 		{
-			Debug.Log(collision.name + "enter");
+			//Debug.Log(collision.name + "enter");
             //pickUpText.gameObject.SetActive(true);
 		}
 	}
@@ -36,7 +38,7 @@ public class Item : MonoBehaviour
 	{
 		if (collision.gameObject.tag.Equals("Player"))
 		{
-			Debug.Log(collision.name + "stay");
+			//Debug.Log(collision.name + "stay");
 			pickUpText.gameObject.SetActive(true);
 		}
 	}
@@ -46,7 +48,7 @@ public class Item : MonoBehaviour
 	{
 		if (collision.gameObject.tag.Equals("Player"))
 		{
-			Debug.Log(collision.name + "exit");
+			//Debug.Log(collision.name + "exit");
 			pickUpText.gameObject.SetActive(false);
 		}
 	}
@@ -63,6 +65,12 @@ public class Item : MonoBehaviour
 	// 아이템 줍기
     private void PickUp()
 	{
-        Destroy(this.gameObject);
+		GetInfo();
+		Destroy(this.gameObject);
     }
+
+	private GameObject GetInfo()
+	{
+		return this.gameObject;
+	}
 }
