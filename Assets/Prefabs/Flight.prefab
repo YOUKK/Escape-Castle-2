@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4667984220154991497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.301027, y: 3.4786332, z: 0}
+  m_LocalPosition: {x: 8.301027, y: 3.4786332, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -138,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0757bc2c93fb38d4b82e5993e2051bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 4667984220154991496}
+  attackDistance: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -163,3 +165,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   playerTf: {fileID: 0}
+  chasingTime: 3

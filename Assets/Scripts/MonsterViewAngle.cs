@@ -64,19 +64,16 @@ public class MonsterViewAngle : MonoBehaviour
         Vector2 dir = playerTf.transform.position - transform.position;
         //Debug.DrawRay(transform.position, dir, Color.yellow);
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dir.normalized, viewDistance);
-        if (rayHit.collider != null)
+        if (rayHit.collider != null && rayHit.collider.name == "Player")
         {
-            if (rayHit.collider.name == "Player")
-            {
-                StopAllCoroutines();
-                Debug.DrawRay(transform.position, dir, Color.green);
-                MonsterMove.isPlayerInSight = true;
-            }
-            else StartCoroutine(ChaseCoroutine());
+            StopAllCoroutines();
+            Debug.DrawRay(transform.position, dir, Color.green);
+            MonsterMove.isPlayerInSight = true;
         }
+        else StartCoroutine(ChaseCoroutine());
     }
 
-    IEnumerator ChaseCoroutine()
+    IEnumerator ChaseCoroutine() // n초간 플레이어 추적 코루틴
     {
         yield return new WaitForSeconds(chasingTime);
         MonsterMove.isPlayerInSight = false;

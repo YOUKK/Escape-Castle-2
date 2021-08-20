@@ -7,10 +7,14 @@ public class MonsterMove : MonoBehaviour
     static public bool isPlayerInSight;
 
     SpriteRenderer SP;
-
+    
     Vector2 lastPos;
 
     int currentWaypoint;
+
+    [SerializeField] Animator anim;
+
+    [SerializeField] float attackDistance;
 
     [SerializeField]
     private Transform[] waypoints;
@@ -29,11 +33,13 @@ public class MonsterMove : MonoBehaviour
 
     void Update()
     {
+        Attack();
         if (!isPlayerInSight)
             Move();
         else FollowPlayer();
     }
 
+    //waypoint를 따라감
     void Move()
     {
         if (Vector2.Distance(waypoints[currentWaypoint].position, transform.position) < 0.02f)
@@ -53,6 +59,7 @@ public class MonsterMove : MonoBehaviour
         lastPos = transform.position;
     }
 
+    //플레이어를 따라감
     void FollowPlayer()
     {
         Vector2 waypointDir = (playerWaypoint.position - transform.position).normalized;
@@ -62,5 +69,13 @@ public class MonsterMove : MonoBehaviour
         if (lastPos.x > transform.position.x) SP.flipX = true;
         else if (lastPos.x < transform.position.x) SP.flipX = false;
         lastPos = transform.position;
+    }
+
+    void Attack()
+    {
+        if(isPlayerInSight && Vector2.Distance(playerWaypoint.position, transform.position) <= attackDistance)
+        {
+            anim.SetTrigger("Attack");
+        }
     }
 }
