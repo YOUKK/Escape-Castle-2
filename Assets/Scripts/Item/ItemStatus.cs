@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Inventory
 public class ItemStatus : MonoBehaviour
 {
 
@@ -36,16 +37,27 @@ public class ItemStatus : MonoBehaviour
 	private ItemList[] items;
 	public Image itemImage;
 
-	public void ViewItem(GameObject item)
+	[SerializeField]
+	private GameObject baseInner;
+
+	public void AcquireItem(ItemList _item)
 	{
-		for(int i = 0; i < items.Length; i++)
+		if (itemUI.item == null)
 		{
-			if(item.name == items[i].itemName)
-			{
-				itemUI.AddItem(items[i]);
-			}
+			itemUI.AddItem(_item);
 		}
 	}
+
+	//public void ViewItem(GameObject item)
+	//{
+	//	for(int i = 0; i < items.Length; i++)
+	//	{
+	//		if(item.name == items[i].itemName)
+	//		{
+	//			itemUI.AddItem(items[i]);
+	//		}
+	//	}
+	//}
 
 
 }

@@ -10,7 +10,10 @@ public class Item : MonoBehaviour
     [SerializeField]
     Text pickUpText;
 
+	[SerializeField]
 	ItemStatus itemstatus;
+
+	ItemList item;
 
 	void Start()
     {
@@ -64,13 +67,13 @@ public class Item : MonoBehaviour
 
 	// 아이템 줍기
     private void PickUp()
-	{
-		GetInfo();
+	{ 
+		itemstatus.AcquireItem(GetInfo());
 		Destroy(this.gameObject);
     }
 
-	private GameObject GetInfo()
+	private ItemList GetInfo()
 	{
-		return this.gameObject;
+		return this.gameObject.transform.GetComponent<ItemPickUp>().item;
 	}
 }
