@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3bff5b683a19b49971a8f7887b6508, type: 3}
+  m_Name: Long Board
+  m_EditorClassIdentifier: 
+  itemName: Long Board
+  itemtype: 0
+  itemImage: {fileID: 5823989116448595682, guid: b8f290991557c2b46a08f2188fd87e36,
+    type: 3}
+  itemPrefab: {fileID: 1986728629495298326, guid: 5751d1c263b2e1b4d93d6c36e262ed56,
+    type: 3}

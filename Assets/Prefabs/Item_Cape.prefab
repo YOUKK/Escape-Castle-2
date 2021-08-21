@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2144363368954033281}
   - component: {fileID: 3018587481168378890}
+  - component: {fileID: 656815326320994537}
   m_Layer: 0
   m_Name: Item_Cape
   m_TagString: Untagged
@@ -82,3 +83,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &656815326320994537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792438721185429564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6582daa58f9f76741a8ef378c2bf15c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: c98dbb916f8bdf4468c8cc8d5be80e57, type: 2}

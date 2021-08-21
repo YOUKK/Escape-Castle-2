@@ -46,6 +46,7 @@ public class ItemStatus : MonoBehaviour
 		{
 			itemUI.AddItem(_item);
 		}
+		
 	}
 
 	//public void ViewItem(GameObject item)
