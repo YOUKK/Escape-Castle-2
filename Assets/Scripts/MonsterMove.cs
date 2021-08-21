@@ -18,12 +18,18 @@ public class MonsterMove : MonoBehaviour
 
     [SerializeField]
     private Transform[] waypoints;
-
     [SerializeField]
     private Transform playerWaypoint;
 
     [SerializeField]
     private float monsterSpeed;
+
+    //View
+    [SerializeField] private float viewDistance; //시야거리
+    [SerializeField] private LayerMask layerMask;
+
+    [SerializeField] public GameObject playerTf;
+    [SerializeField] private int chasingTime;
 
     void Start()
     {
@@ -33,6 +39,7 @@ public class MonsterMove : MonoBehaviour
 
     void Update()
     {
+        View();
         Attack();
         if (!isPlayerInSight)
             Move();
@@ -77,5 +84,25 @@ public class MonsterMove : MonoBehaviour
         {
             anim.SetTrigger("Attack");
         }
+    }
+
+    void View()
+    {
+        Vector2 dir = playerTf.transform.position - transform.position;
+        //Debug.DrawRay(transform.position, dir, Color.yellow);
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dir.normalized, viewDistance, layerMask);
+        if (rayHit.collider != null && rayHit.collider.name == "Player")
+        {
+            StopAllCoroutines();
+            Debug.DrawRay(transform.position, dir, Color.green);
+            MonsterMove.isPlayerInSight = true;
+        }
+        else StartCoroutine(ChaseCoroutine());
+    }
+
+    IEnumerator ChaseCoroutine() // n초간 플레이어 추적 코루틴
+    {
+        yield return new WaitForSeconds(chasingTime);
+        MonsterMove.isPlayerInSight = false;
     }
 }

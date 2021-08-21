@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4667984220154991496}
   - component: {fileID: 1300611900471348866}
   - component: {fileID: 6252053504149953140}
-  - component: {fileID: 2368502918074907114}
+  - component: {fileID: 5692995109456061286}
   m_Layer: 10
   m_Name: Flight
   m_TagString: Untagged
@@ -145,24 +145,29 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  playerWaypoint: {fileID: 0}
+  playerWaypoint: {fileID: 8157163882076021464, guid: e9a4a20e00d0d644a900c65e14864a50,
+    type: 3}
   monsterSpeed: 4
---- !u!114 &2368502918074907114
-MonoBehaviour:
+  viewDistance: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 823
+  playerTf: {fileID: 8157163882076021470, guid: e9a4a20e00d0d644a900c65e14864a50,
+    type: 3}
+  chasingTime: 3
+--- !u!70 &5692995109456061286
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4667984220154991497}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e383eccf140f5f94bb200d12c229de2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewAngle: 360
-  viewDistance: 5
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  playerTf: {fileID: 0}
-  chasingTime: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.28125, y: 0.96875}
+  m_Direction: 0
