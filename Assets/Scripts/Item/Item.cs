@@ -10,10 +10,7 @@ public class Item : MonoBehaviour
     [SerializeField]
     Text pickUpText;
 
-	[SerializeField]
 	ItemStatus itemstatus;
-
-	ItemList item;
 
 	void Start()
     {
@@ -22,8 +19,8 @@ public class Item : MonoBehaviour
 
     void Update()
     {
-        TryPickUp();
-    }
+
+	}
 
 
 	// 플레이어와 아이템이 enter일 때
@@ -36,11 +33,15 @@ public class Item : MonoBehaviour
 		}
 	}
 
+	public bool pickupActivated = false; //습득 가능할 시 true
+
 	// 플레이어와 아이템이 stay일 때
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag.Equals("Player"))
 		{
+			pickupActivated = true;
+			Debug.Log(pickupActivated);
 			//Debug.Log(collision.name + "stay");
 			pickUpText.gameObject.SetActive(true);
 		}
@@ -51,29 +52,18 @@ public class Item : MonoBehaviour
 	{
 		if (collision.gameObject.tag.Equals("Player"))
 		{
+			pickupActivated = false;
+			Debug.Log(pickupActivated);
 			//Debug.Log(collision.name + "exit");
 			pickUpText.gameObject.SetActive(false);
 		}
 	}
 
-	// 아이템 줍기 시도
-	private void TryPickUp()
-	{
-		if (Input.GetKeyDown(KeyCode.F))
-		{
-            PickUp();
-		}
-	}
+	//private ItemList GetInfo()
+	//{
 
-	// 아이템 줍기
-    private void PickUp()
-	{ 
-		itemstatus.AcquireItem(GetInfo());
-		Destroy(this.gameObject);
-    }
+	//	return this.gameObject.transform.GetComponent<ItemPickUp>().item;
+	//}
 
-	private ItemList GetInfo()
-	{
-		return this.gameObject.transform.GetComponent<ItemPickUp>().item;
-	}
+	
 }

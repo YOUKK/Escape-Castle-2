@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 		theAnimator = GetComponent<Animator>();
 		theBoxCollider2D = GetComponent<BoxCollider2D>();
 		theDashUI = FindObjectOfType<Dash_UI>();
+		theCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
 
 		// 초기화
 		currentSpeed = walkSpeed;
@@ -125,5 +126,50 @@ public class PlayerController : MonoBehaviour
 			theAnimator.SetBool("isWalk", false);
 		}
 		lastPos = transform.position;
+
+	}
+
+	[SerializeField]
+	private float range;
+	[SerializeField]
+	private LayerMask layerMask;
+
+	private CapsuleCollider2D theCapsuleCollider2D;
+
+
+	Item item;
+
+	// 아이템 줍기 시도
+	private void TryPickUp()
+	{
+			if (Input.GetKeyDown(KeyCode.F))
+			{
+				PickUp();
+			}
+	}
+
+	// 아이템 줍기
+	private void PickUp()
+	{
+		if (item.pickupActivated)
+		{
+			RaycastHit2D hitInfo; // 충돌체 정보 저장
+
+			Vector2 start = transform.position;
+			Vector2 end = start + new Vector2(lastPos.x * range, lastPos.y * range);
+
+			theCapsuleCollider2D.enabled = false;
+			theBoxCollider2D.enabled = false;
+			hitInfo = Physics2D.Linecast(start, end, layerMask);
+			theCapsuleCollider2D.enabled = true;
+			theBoxCollider2D.enabled = true;
+
+			if (hitInfo.transform != null)
+			{
+				Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "획득했습니다");
+				//itemstatus.AcquireItem(GetInfo());
+				Destroy(this.gameObject);
+			}
+		}
 	}
 }

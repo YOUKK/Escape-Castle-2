@@ -126,6 +126,10 @@ MonoBehaviour:
   theLayerMask:
     serializedVersion: 2
     m_Bits: 256
+  range: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!95 &8157163882076021467
 Animator:
   serializedVersion: 3
