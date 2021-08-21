@@ -6,7 +6,7 @@ public class MonsterViewAngle : MonoBehaviour
 {
     [SerializeField] private float viewAngle; //시야각
     [SerializeField] private float viewDistance; //시야거리
-    [SerializeField] private LayerMask targetLayer; // 플레이어 레이어를 감지
+    [SerializeField] private LayerMask layerMask;
 
     [SerializeField] public GameObject playerTf;
     [SerializeField] private int chasingTime;
@@ -63,7 +63,7 @@ public class MonsterViewAngle : MonoBehaviour
 
         Vector2 dir = playerTf.transform.position - transform.position;
         //Debug.DrawRay(transform.position, dir, Color.yellow);
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dir.normalized, viewDistance);
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dir.normalized, viewDistance, layerMask);
         if (rayHit.collider != null && rayHit.collider.name == "Player")
         {
             StopAllCoroutines();
