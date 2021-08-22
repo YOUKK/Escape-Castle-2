@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LongBoard : Item
+public class LongBoard : MonoBehaviour
 {
 
     void Start()
