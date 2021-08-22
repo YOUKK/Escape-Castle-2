@@ -6,12 +6,10 @@ using UnityEngine.UI;
 // Inventory
 public class ItemStatus : MonoBehaviour
 {
+	[SerializeField]
 	private ItemStatus_UI itemUI;
 	private ItemList[] items;
 	public Image itemImage;
-
-	[SerializeField]
-	private GameObject baseInner;
 
 	public void AcquireItem(ItemList _item)
 	{

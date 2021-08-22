@@ -7,7 +7,7 @@ public class PickupAction : MonoBehaviour
 {
 	// 아이템 획득 설명 텍스트
 	[SerializeField]
-	Text pickUpText;
+	private Text pickUpText;
 
 	private bool pickupActivated = false; //습득 가능할 시 true
 
@@ -22,14 +22,14 @@ public class PickupAction : MonoBehaviour
 	ItemStatus itemstatus;
 
 	void Start()
-    {
+	{
 		pickUpText.gameObject.SetActive(false);
 	}
 
-    void Update()
-    {
+	void Update()
+	{
 		TryPickUp();
-    }
+	}
 
 	// 아이템 줍기 시도
 	private void TryPickUp()
@@ -51,8 +51,8 @@ public class PickupAction : MonoBehaviour
 			{
 				Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up), Color.blue, 0.3f);
 				Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + "획득했습니다");
-				//itemstatus.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
-				//Destroy(hitInfo.transform.gameObject);
+				itemstatus.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
+				Destroy(hitInfo.transform.gameObject);
 			}
 		}
 	}

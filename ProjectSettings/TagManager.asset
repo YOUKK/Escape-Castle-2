@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - New tag
   - Item
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -19,7 +19,7 @@ TagManager:
   - Player
   - Moster
   - Item
-  - 
+  - Key
   - 
   - 
   - 
