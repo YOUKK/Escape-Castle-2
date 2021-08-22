@@ -151,7 +151,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   playerTf: {fileID: 0}
-  chasingTime: 3
+  chasingTime: 2
 --- !u!70 &5692995109456061286
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
