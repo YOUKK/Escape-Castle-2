@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class MonsterMove : MonoBehaviour
 {
-    bool isPlayerInSight;
+    private bool isPlayerInSight;
+    public bool isWearCape;
 
     SpriteRenderer SP;
 
@@ -98,7 +99,7 @@ public class MonsterMove : MonoBehaviour
     {
         Vector2 dir = playerTf.position - transform.position;
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dir.normalized, viewDistance, layerMask);
-        if (rayHit.collider != null && rayHit.collider.name == "Player")
+        if (rayHit.collider != null && rayHit.collider.name == "Player" && !isWearCape)
         {
             StopAllCoroutines();
             Debug.DrawRay(transform.position, dir, Color.green);
@@ -109,7 +110,10 @@ public class MonsterMove : MonoBehaviour
 
     IEnumerator ChaseCoroutine() // n초간 플레이어 추적 코루틴
     {
-        yield return new WaitForSeconds(chasingTime);
+        if (!isWearCape)
+        {
+            yield return new WaitForSeconds(chasingTime);
+        }
         isPlayerInSight = false;
     }
 }
