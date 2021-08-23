@@ -15,9 +15,15 @@ public class PlayerController : MonoBehaviour
 	private bool isMove;
 	private bool isWalk;
 	private bool isRun;
+	private bool isDead;
 
 	// 움직임 체크 변수
 	private Vector3 lastPos;
+
+	[SerializeField]
+	MonsterMove flight;
+	[SerializeField]
+	MonsterMove skeleton;
 
 	// 필요한 컴포넌트
 	private SpriteRenderer theSpriteRenderer;
@@ -38,9 +44,16 @@ public class PlayerController : MonoBehaviour
 	}
 	void Update()
 	{
-		Walk();
-		TryRun();
-		MoveCheck();
+		if (!isDead)
+		{
+			Walk();
+			TryRun();
+			MoveCheck();
+		}
+		else
+		{
+			StartCoroutine("Dead");
+		}
 	}
 
 	// 달리기 시도
@@ -128,4 +141,23 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (!flight.isWearCape || !skeleton.isWearCape)
+		{
+			if (collision.gameObject.tag.Equals("Monster"))
+			{
+				isDead = true;
+			}
+		}
+	}
+
+	IEnumerator Dead()
+	{
+		theAnimator.SetTrigger("Dead");
+
+		yield return new WaitForSeconds(0.8f);
+
+		this.gameObject.SetActive(false);
+	}
 }

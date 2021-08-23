@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 6
+  flight: {fileID: 0}
+  skeleton: {fileID: 0}
   theLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -239,7 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemUI: {fileID: 0}
+  flight: {fileID: 0}
+  skeleton: {fileID: 0}
   itemImage: {fileID: 0}
+  waitTime: 0
 --- !u!1 &8157163883202017824
 GameObject:
   m_ObjectHideFlags: 0

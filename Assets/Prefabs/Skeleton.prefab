@@ -16,11 +16,11 @@ GameObject:
   - component: {fileID: 4876828030042897708}
   m_Layer: 10
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5985702008619469050
 Transform:
   m_ObjectHideFlags: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0757bc2c93fb38d4b82e5993e2051bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWearCape: 0
   anim: {fileID: 6574281446032868891}
   attackDistance: 1.5
   viewDistance: 3
