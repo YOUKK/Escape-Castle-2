@@ -18,3 +18,4 @@ public class ItemList : ScriptableObject
 		Cape
 	}
 }
+//
