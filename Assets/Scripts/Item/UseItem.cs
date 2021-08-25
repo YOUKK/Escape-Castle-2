@@ -11,6 +11,8 @@ public class UseItem : MonoBehaviour
     private MonsterMove flight;
     [SerializeField]
     private MonsterMove skeleton;
+    [SerializeField]
+    private KeyPickupAction theKeyPickupAction;
 
     private SpriteRenderer theSpriteRenderer;
     public Image itemImage;
@@ -21,7 +23,6 @@ public class UseItem : MonoBehaviour
     void Start()
     {
         theSpriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
     void Update()
@@ -33,24 +34,25 @@ public class UseItem : MonoBehaviour
 	{
         if(itemUI.item != null)
 		{
-			if (Input.GetKeyDown(KeyCode.E))
-			{
+            // key랑 겹쳐져 있지 않을 때
+            if (Input.GetKeyDown(KeyCode.E) && !theKeyPickupAction.pickupActivated)
+            {
                 itemImage.gameObject.SetActive(false);
 
-                if(itemUI.item.itemName == "Cape")
-				{
+                if (itemUI.item.itemName == "Cape")
+                {
                     Debug.Log("Cape를 사용했습니다");
                     Cape();
-				}
-				else if(itemUI.item.itemName == "Long Board")
+                }
+                else if (itemUI.item.itemName == "Long Board")
                 {
                     Debug.Log("Long Board를 사용했습니다");
-				}
-                else if(itemUI.item.itemName == "Short Board")
-				{
+                }
+                else if (itemUI.item.itemName == "Short Board")
+                {
                     Debug.Log("Short Board를 사용했습니다");
-				}
-			}
+                }
+            }
 		}
 	}
 
@@ -60,7 +62,7 @@ public class UseItem : MonoBehaviour
     }
 
     IEnumerator WaitTime()
-	{
+    {
         Color color = theSpriteRenderer.color;
         color.a = 0.7f;
         theSpriteRenderer.color = color;
@@ -69,6 +71,7 @@ public class UseItem : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
+        Debug.Log("cape사용이 끝났습니다");
         color.a = 1f;
         theSpriteRenderer.color = color;
         flight.isWearCape = false;

@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpText: {fileID: 0}
+  pickupActivated: 0
   range: 3
   layerMask:
     serializedVersion: 2
@@ -243,6 +244,7 @@ MonoBehaviour:
   itemUI: {fileID: 0}
   flight: {fileID: 0}
   skeleton: {fileID: 0}
+  theKeyPickupAction: {fileID: 454928331}
   itemImage: {fileID: 0}
   waitTime: 0
 --- !u!1 &8157163883202017824

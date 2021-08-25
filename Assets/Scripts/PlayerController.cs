@@ -158,6 +158,11 @@ public class PlayerController : MonoBehaviour
 
 		yield return new WaitForSeconds(0.8f);
 
+		flight.isWearCape = true;
+		skeleton.isWearCape = true;
+
 		this.gameObject.SetActive(false);
+
+		//theAnimator.SetBool("DeadtoIdle", true);
 	}
 }

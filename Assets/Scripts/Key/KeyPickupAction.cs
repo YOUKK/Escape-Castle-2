@@ -9,7 +9,7 @@ public class KeyPickupAction : MonoBehaviour
 	[SerializeField]
 	private Text pickUpText;
 
-	private bool pickupActivated = false; //습득 가능할 시 true
+	public bool pickupActivated = false; //습득 가능할 시 true
 
 	private RaycastHit2D hitInfo;
 
