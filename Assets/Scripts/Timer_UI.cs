@@ -19,14 +19,14 @@ public class Timer_UI : MonoBehaviour
 
     void Update()
     {
-        if (min != 0)
+        /*if (min != 0)
         {
             --min;
-            if (sec == 0)
+            sec -= Time.deltaTime;
+            if (sec <= 0)
             {
                 sec += 60;
             }
-            sec -= Time.deltaTime;
         }
         else if(min == 0 && sec == 0)
         {
@@ -35,6 +35,28 @@ public class Timer_UI : MonoBehaviour
         }
 
         minute.text = min.ToString();
-        second.text = Mathf.Ceil(sec).ToString();
+        second.text = Mathf.Ceil(sec).ToString();*/
+
+        if (sec <= 0)
+        {
+            if (min != 0)
+            {
+                sec += 59;
+                min--;
+            }
+            else
+            {
+                sec = 0;
+                min = 0;
+            }
+        }
+        else if (sec > 0)
+            sec -= Time.deltaTime;
+
+        minute.text = Mathf.Ceil(min).ToString();
+        if(sec < 10)
+            second.text = "0" + Mathf.Ceil(sec).ToString();
+        else
+            second.text = Mathf.Ceil(sec).ToString();
     }
 }
