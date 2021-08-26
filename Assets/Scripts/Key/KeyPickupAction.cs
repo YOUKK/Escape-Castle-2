@@ -9,15 +9,19 @@ public class KeyPickupAction : MonoBehaviour
 	[SerializeField]
 	private Text pickUpText;
 
+	// 상태 변수
 	public bool pickupActivated = false; //습득 가능할 시 true
 
+	// 아이템 줍는데 쓰이는 레이캐스트
 	private RaycastHit2D hitInfo;
-
+	// 아이템 줍는데 쓰이는 레이캐스트에 필요한 요소
 	[SerializeField]
 	private float range;
 	// 키 레이어에만 반응할 수 있게 설정
 	[SerializeField]
 	private LayerMask layerMask;
+
+	// 다른 스크립트 사용
 	[SerializeField]
 	KeyStatus keystatus;
 

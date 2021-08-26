@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UseItem : MonoBehaviour
 {
+    // 다른 스크립트 사용
     [SerializeField]
     private ItemStatus_UI itemUI;
     [SerializeField]
@@ -14,9 +15,11 @@ public class UseItem : MonoBehaviour
     [SerializeField]
     private KeyPickupAction theKeyPickupAction;
 
+    // 필요한 컴포넌트
     private SpriteRenderer theSpriteRenderer;
     public Image itemImage;
 
+    // cape 발동 시간
     [SerializeField]
     private float waitTime;
 
@@ -30,6 +33,7 @@ public class UseItem : MonoBehaviour
         CheckItem();
     }
 
+    // 아이템 사용
     private void CheckItem()
 	{
         if(itemUI.item != null)
@@ -56,11 +60,13 @@ public class UseItem : MonoBehaviour
 		}
 	}
 
+    // cape 아이템 사용
     private void Cape()
 	{
         StartCoroutine("WaitTime");
     }
 
+    // cape 아이템 기능
     IEnumerator WaitTime()
     {
         Color color = theSpriteRenderer.color;

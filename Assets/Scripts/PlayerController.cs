@@ -32,12 +32,21 @@ public class PlayerController : MonoBehaviour
 	public LayerMask theLayerMask;
 	private Dash_UI theDashUI;
 
+	// 오디오
+	public AudioClip walkSound;
+	public AudioClip runSound;
+
+	private AudioSource theAudioSource;
+
+
 	void Start()
 	{
 		theSpriteRenderer = GetComponent<SpriteRenderer>();
 		theAnimator = GetComponent<Animator>();
 		theBoxCollider2D = GetComponent<BoxCollider2D>();
+		theAudioSource = GetComponent<AudioSource>();
 		theDashUI = FindObjectOfType<Dash_UI>();
+
 
 		// 초기화
 		currentSpeed = walkSpeed;
@@ -86,6 +95,12 @@ public class PlayerController : MonoBehaviour
 		theAnimator.SetBool("isRun", false);
 	}
 
+	private void PlayWalkSound()
+	{
+		theAudioSource.clip = walkSound;
+		theAudioSource.Play();
+	}
+
 	// 걷기
 	private void Walk()
 	{
@@ -93,19 +108,23 @@ public class PlayerController : MonoBehaviour
 		{
 			transform.Translate(transform.right * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = true;
+			//PlayWalkSound();
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
 			transform.Translate(transform.right * -1 * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = false;
+			//PlayWalkSound();
 		}
 		if (Input.GetKey(KeyCode.W))
 		{
 			transform.Translate(transform.up * currentSpeed * Time.deltaTime);
+			//PlayWalkSound();
 		}
 		if (Input.GetKey(KeyCode.S))
 		{
 			transform.Translate(transform.up * -1 * currentSpeed * Time.deltaTime);
+			//PlayWalkSound();
 		}
 	}
 
@@ -141,6 +160,7 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+	// 죽음 체크
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (!flight.isWearCape || !skeleton.isWearCape)
@@ -152,6 +172,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	// 죽음
 	IEnumerator Dead()
 	{
 		theAnimator.SetTrigger("Dead");
