@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
 	private AudioManager theAudioManager;
 
+	private float timer;
+	private float waitingTime;
 
 	void Start()
 	{
@@ -47,16 +49,28 @@ public class PlayerController : MonoBehaviour
 		theAudioManager = FindObjectOfType<AudioManager>();
 		theDashUI = FindObjectOfType<Dash_UI>();
 
+		timer = 0f;
+		waitingTime = 0.9f;
 
 		// 초기화
 		currentSpeed = walkSpeed;
 	}
 	void Update()
 	{
+		if (isWalk)
+		{
+			timer += Time.deltaTime;
+			if (timer > waitingTime)
+			{
+				WalkSoundPlayer();
+				timer = 0;
+			}
+		}
+
 		if (!isDead)
 		{
 			Walk();
-			StartCoroutine("PlayWalkSound");
+			//StartCoroutine("PlayWalkSound");
 			TryRun();
 			MoveCheck();
 		}
@@ -96,16 +110,21 @@ public class PlayerController : MonoBehaviour
 		theAnimator.SetBool("isRun", false);
 	}
 
-	IEnumerator PlayWalkSound()
+	//IEnumerator PlayWalkSound()
+	//{
+	//	if (isWalk)
+	//	{
+	//		WalkSoundPlayer();
+
+	//		yield return new WaitForSeconds(1f);
+
+	//		isWalk = false;
+	//	}
+	//}
+
+	private void WalkSoundPlayer()
 	{
-		while (isWalk)
-		{
-			theAudioManager.Play(WalkSound);
-
-			yield return new WaitForSeconds(1f);
-
-			isWalk = false;
-		}
+		theAudioManager.Play(WalkSound);
 	}
 
 	// 걷기
