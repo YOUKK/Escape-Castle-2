@@ -33,10 +33,10 @@ public class PlayerController : MonoBehaviour
 	private Dash_UI theDashUI;
 
 	// 오디오
-	public AudioClip walkSound;
-	public AudioClip runSound;
+	public string WalkSound;
+	public string RunSound;
 
-	private AudioSource theAudioSource;
+	private AudioManager theAudioManager;
 
 
 	void Start()
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 		theSpriteRenderer = GetComponent<SpriteRenderer>();
 		theAnimator = GetComponent<Animator>();
 		theBoxCollider2D = GetComponent<BoxCollider2D>();
-		theAudioSource = GetComponent<AudioSource>();
+		theAudioManager = FindObjectOfType<AudioManager>();
 		theDashUI = FindObjectOfType<Dash_UI>();
 
 
@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
 		if (!isDead)
 		{
 			Walk();
+			StartCoroutine("PlayWalkSound");
 			TryRun();
 			MoveCheck();
 		}
@@ -95,10 +96,16 @@ public class PlayerController : MonoBehaviour
 		theAnimator.SetBool("isRun", false);
 	}
 
-	private void PlayWalkSound()
+	IEnumerator PlayWalkSound()
 	{
-		theAudioSource.clip = walkSound;
-		theAudioSource.Play();
+		while (isWalk)
+		{
+			theAudioManager.Play(WalkSound);
+
+			yield return new WaitForSeconds(1f);
+
+			isWalk = false;
+		}
 	}
 
 	// 걷기
@@ -108,23 +115,19 @@ public class PlayerController : MonoBehaviour
 		{
 			transform.Translate(transform.right * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = true;
-			//PlayWalkSound();
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
 			transform.Translate(transform.right * -1 * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = false;
-			//PlayWalkSound();
 		}
 		if (Input.GetKey(KeyCode.W))
 		{
 			transform.Translate(transform.up * currentSpeed * Time.deltaTime);
-			//PlayWalkSound();
 		}
 		if (Input.GetKey(KeyCode.S))
 		{
 			transform.Translate(transform.up * -1 * currentSpeed * Time.deltaTime);
-			//PlayWalkSound();
 		}
 	}
 
@@ -150,6 +153,7 @@ public class PlayerController : MonoBehaviour
 
 			isWalk = true;
 			theAnimator.SetBool("isWalk", true);
+			//theAudioManager.Play(WalkSound);
 		}
 		else
 		{
