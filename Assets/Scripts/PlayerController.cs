@@ -38,8 +38,11 @@ public class PlayerController : MonoBehaviour
 
 	private AudioManager theAudioManager;
 
-	private float timer;
-	private float waitingTime;
+	private float walkTimer;
+	private float walkWaitingTime;
+
+	private float runTimer;
+	private float runWaitingTime;
 
 	void Start()
 	{
@@ -49,21 +52,34 @@ public class PlayerController : MonoBehaviour
 		theAudioManager = FindObjectOfType<AudioManager>();
 		theDashUI = FindObjectOfType<Dash_UI>();
 
-		timer = 0f;
-		waitingTime = 0.9f;
+		walkTimer = 0f;
+		walkWaitingTime = 0.9f;
+
+		runTimer = 0f;
+		runWaitingTime = 0.5f;
 
 		// 초기화
 		currentSpeed = walkSpeed;
 	}
 	void Update()
 	{
-		if (isWalk)
+		if (isWalk && !isRun)
 		{
-			timer += Time.deltaTime;
-			if (timer > waitingTime)
+			walkTimer += Time.deltaTime;
+			if (walkTimer > walkWaitingTime)
 			{
 				WalkSoundPlayer();
-				timer = 0;
+				walkTimer = 0;
+			}
+		}
+
+		if (isRun)
+		{
+			runTimer += Time.deltaTime;
+			if(runTimer > runWaitingTime)
+			{
+				RunSoundPlayer();
+				runTimer = 0;
 			}
 		}
 
@@ -78,6 +94,28 @@ public class PlayerController : MonoBehaviour
 		{
 			StartCoroutine("Dead");
 		}
+	}
+
+	//IEnumerator PlayWalkSound()
+	//{
+	//	if (isWalk)
+	//	{
+	//		WalkSoundPlayer();
+
+	//		yield return new WaitForSeconds(1f);
+
+	//		isWalk = false;
+	//	}
+	//}
+
+	private void WalkSoundPlayer()
+	{
+		theAudioManager.Play(WalkSound);
+	}
+
+	private void RunSoundPlayer()
+	{
+		theAudioManager.Play(RunSound);
 	}
 
 	// 달리기 시도
@@ -108,23 +146,6 @@ public class PlayerController : MonoBehaviour
 		isRun = false;
 		currentSpeed = walkSpeed;
 		theAnimator.SetBool("isRun", false);
-	}
-
-	//IEnumerator PlayWalkSound()
-	//{
-	//	if (isWalk)
-	//	{
-	//		WalkSoundPlayer();
-
-	//		yield return new WaitForSeconds(1f);
-
-	//		isWalk = false;
-	//	}
-	//}
-
-	private void WalkSoundPlayer()
-	{
-		theAudioManager.Play(WalkSound);
 	}
 
 	// 걷기
