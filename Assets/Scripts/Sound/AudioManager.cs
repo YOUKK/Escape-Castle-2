@@ -12,6 +12,7 @@ public class Sound
 
     public float Volumn;
     public bool loop;
+   // public float Blend;
 
     public void SetSource(AudioSource _source)
     {
@@ -19,6 +20,7 @@ public class Sound
         source.clip = clip;
         source.loop = loop;
         source.volume = Volumn;
+        //source.spatialBlend = Blend;
     }
 
     public void SetVolumn()
@@ -40,6 +42,11 @@ public class Sound
     {
         source.loop = true;
     }
+
+ //   public void SetSpatialBlend()
+	//{
+ //       source.spatialBlend = 1;
+	//}
 
     public void SetLoopCancel()
     {
@@ -139,4 +146,16 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+
+ //   public void SetBlend(string _name)
+	//{
+ //       for (int i = 0; i < sounds.Length; i++)
+ //       {
+ //           if (_name == sounds[i].name)
+ //           {
+ //               sounds[i].SetSpatialBlend();
+ //               return;
+ //           }
+ //       }
+ //   }
 }

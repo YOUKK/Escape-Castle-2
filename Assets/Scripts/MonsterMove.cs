@@ -28,24 +28,45 @@ public class MonsterMove : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
 
+    //private float walkTimer;
+    //private float walkWaitingTime;
+    //public string SkeletonSound;
+    //private AudioManager theAudioManager;
+
     void Start()
     {
         SP = GetComponent<SpriteRenderer>();
         lastPos = transform.position;
 
+        //walkTimer = 0f;
+        //walkWaitingTime = 0.3f;
+
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         navMeshAgent.SetDestination(waypoints[0].position);
+        //theAudioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
     {
+        //walkTimer += Time.deltaTime;
+        //if (walkTimer > walkWaitingTime)
+        //{
+        //    WalkSoundPlayer();
+        //    walkTimer = 0;
+        //}
+
         View();
         Attack();
         if (!isPlayerInSight) Move();
         else FollowPlayer();
     }
+
+ //   private void WalkSoundPlayer()
+	//{
+ //       theAudioManager.Play(SkeletonSound);
+	//}
 
     //waypoint를 따라감
     void Move()

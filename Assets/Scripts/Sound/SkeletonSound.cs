@@ -13,6 +13,7 @@ public class SkeletonSound : MonoBehaviour
     void Start()
     {
         theAudioSource = GetComponent<AudioSource>();
+        theAudioSource.spatialBlend = 1;
 
         walkTimer = 0f;
         walkWaitingTime = 0.3f;
