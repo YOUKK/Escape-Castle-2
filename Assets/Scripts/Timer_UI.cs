@@ -23,7 +23,7 @@ public class Timer_UI : MonoBehaviour
         {
             if (min != 0)
             {
-                sec += 59;
+                sec += 60;
                 min--;
             }
             else
@@ -35,10 +35,25 @@ public class Timer_UI : MonoBehaviour
         else if (sec > 0)
             sec -= Time.deltaTime;
 
-        minute.text = Mathf.Ceil(min).ToString();
-        if(sec <= 9)
-            second.text = "0" + Mathf.Ceil(sec).ToString();
+        minute.text = Mathf.Floor(min).ToString();
+        if(sec < 10)
+            second.text = "0" + Mathf.Floor(sec).ToString();
         else
-            second.text = Mathf.Ceil(sec).ToString();
+            second.text = Mathf.Floor(sec).ToString();
+        
+        StartCoroutine(WarningCoroutine());
+    }
+
+    IEnumerator WarningCoroutine()
+    {
+        if (min * 60 + sec <= 15)
+        {
+            minute.color = Color.red;
+            second.color = Color.red;
+            yield return new WaitForSeconds(1f);
+            minute.color = Color.white;
+            second.color = Color.white;
+            yield return new WaitForSeconds(1f);
+        }
     }
 }
