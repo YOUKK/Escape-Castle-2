@@ -53,10 +53,10 @@ public class PlayerController : MonoBehaviour
 		theDashUI = FindObjectOfType<Dash_UI>();
 
 		walkTimer = 0f;
-		walkWaitingTime = 0.9f;
+		walkWaitingTime = 0.7f;
 
 		runTimer = 0f;
-		runWaitingTime = 0.5f;
+		runWaitingTime = 0.35f;
 
 		// 초기화
 		currentSpeed = walkSpeed;
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 			runTimer += Time.deltaTime;
 			if(runTimer > runWaitingTime)
 			{
-				RunSoundPlayer();
+				WalkSoundPlayer();
 				runTimer = 0;
 			}
 		}
