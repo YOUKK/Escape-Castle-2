@@ -34,26 +34,27 @@ public class Timer_UI : MonoBehaviour
         }
         else if (sec > 0)
             sec -= Time.deltaTime;
-
+        
+        //시간 Text로 표시
         minute.text = Mathf.Floor(min).ToString();
         if(sec < 10)
             second.text = "0" + Mathf.Floor(sec).ToString();
         else
             second.text = Mathf.Floor(sec).ToString();
-        
-        StartCoroutine(WarningCoroutine());
-    }
 
-    IEnumerator WarningCoroutine()
-    {
+        //시간 임박 경고
         if (min * 60 + sec <= 15)
         {
-            minute.color = Color.red;
-            second.color = Color.red;
-            yield return new WaitForSeconds(1f);
-            minute.color = Color.white;
-            second.color = Color.white;
-            yield return new WaitForSeconds(1f);
+            if(Mathf.Floor(sec) %2==0)
+            {
+                minute.color = Color.red;
+                second.color = Color.red;
+            }
+            else
+            {
+                minute.color = Color.white;
+                second.color = Color.white;
+            }
         }
     }
 }
