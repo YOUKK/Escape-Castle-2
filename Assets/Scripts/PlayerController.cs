@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 	private bool isMove;
 	private bool isWalk;
 	private bool isRun;
-	private bool isDead;
+	public bool isDead;
 
 	// 움직임 체크 변수
 	private Vector3 lastPos;
@@ -216,6 +216,9 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
+	[SerializeField]
+	private GameObject Ending_Dead;
+
 	// 죽음
 	IEnumerator Dead()
 	{
@@ -226,7 +229,9 @@ public class PlayerController : MonoBehaviour
 		flight.isWearCape = true;
 		skeleton.isWearCape = true;
 
-		this.gameObject.SetActive(false);
+		Ending_Dead.SetActive(true);
+
+		//this.gameObject.SetActive(false);
 
 		//theAnimator.SetBool("DeadtoIdle", true);
 	}

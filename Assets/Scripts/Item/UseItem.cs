@@ -70,7 +70,7 @@ public class UseItem : MonoBehaviour
     IEnumerator WaitTime()
     {
         Color color = theSpriteRenderer.color;
-        color.a = 0.7f;
+        color.a = 0.5f;
         theSpriteRenderer.color = color;
         flight.isWearCape = true;
         skeleton.isWearCape = true;
