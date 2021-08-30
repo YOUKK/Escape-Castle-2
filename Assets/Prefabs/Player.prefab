@@ -200,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 3
   runSpeed: 6
+  isDead: 0
   flight: {fileID: 0}
   skeleton: {fileID: 0}
   theLayerMask:
@@ -207,6 +208,7 @@ MonoBehaviour:
     m_Bits: 256
   WalkSound: WalkSound
   RunSound: RunSound
+  Ending_Dead: {fileID: 0}
 --- !u!95 &8157163882076021467
 Animator:
   serializedVersion: 3
@@ -337,7 +339,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
