@@ -30,7 +30,10 @@ public class Sound
 
     public void Play()
     {
-        source.Play();
+        if (source != null)
+        {
+            source.Play();
+        }
     }
 
     public void Stop()
