@@ -20,8 +20,8 @@ public class UseItem : MonoBehaviour
     public Image itemImage;
 
     // cape 발동 시간
-    [SerializeField]
-    private float waitTime;
+    //[SerializeField]
+    private float waitTime = 10f;
 
     void Start()
     {
