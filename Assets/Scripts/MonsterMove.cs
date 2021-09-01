@@ -12,7 +12,7 @@ public class MonsterMove : MonoBehaviour
 
     Vector2 lastPos;
 
-    int currentWaypoint;
+    int currentWaypoint = 0;
 
     [SerializeField] Animator anim;
 
