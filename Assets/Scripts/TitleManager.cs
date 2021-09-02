@@ -7,7 +7,7 @@ public class TitleManager : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Stage1");
     }
     public void Quit()
     {

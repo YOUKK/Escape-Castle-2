@@ -7,6 +7,7 @@ public class KeyStatus_UI : MonoBehaviour
 {
 	public KeyInfo key;
 	public Image keyImage;
+	public bool isHaveKey = false;
 
 	void Start()
 	{
@@ -25,5 +26,6 @@ public class KeyStatus_UI : MonoBehaviour
 		key = _key;
 		keyImage.sprite = key.itemImage;
 		SetColor(1);
+		isHaveKey = true;
 	}
 }

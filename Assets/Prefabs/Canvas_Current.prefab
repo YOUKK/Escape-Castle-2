@@ -493,6 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: {fileID: 0}
   keyImage: {fileID: 4056737032097401376}
+  isHaveKey: 0
 --- !u!1 &4056737031503156292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,8 +1406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minute: {fileID: 4056737032874727584}
   second: {fileID: 4056737031676836590}
-  min: 0
-  sec: 0
+  Ending_Dead: {fileID: 4056737031593085423}
+  monsters: []
 --- !u!1 &4056737032489136754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,7 +1842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4056737032795305902
 RectTransform:
   m_ObjectHideFlags: 0
