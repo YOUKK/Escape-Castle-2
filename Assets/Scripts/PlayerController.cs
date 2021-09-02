@@ -21,13 +21,7 @@ public class PlayerController : MonoBehaviour
 	private Vector3 lastPos;
 
 	[SerializeField]
-	MonsterMove flight1;
-	[SerializeField]
-	MonsterMove flight2;
-	[SerializeField]
-	MonsterMove skeleton1;
-	[SerializeField]
-	MonsterMove skeleton2;
+	private MonsterMove[] monsters;
 
 	// 필요한 컴포넌트
 	private SpriteRenderer theSpriteRenderer;
@@ -211,7 +205,7 @@ public class PlayerController : MonoBehaviour
 	// 죽음 체크
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (!flight1.isWearCape || !skeleton1.isWearCape /*|| !flight2.isWearCape || !skeleton2.isWearCape*/)
+		if (!monsters[0].isWearCape)
 		{
 			if (collision.gameObject.tag.Equals("Monster"))
 			{
@@ -230,10 +224,10 @@ public class PlayerController : MonoBehaviour
 
 		yield return new WaitForSeconds(0.8f);
 
-		flight1.isWearCape = true;
-		//flight2.isWearCape = true;
-		skeleton1.isWearCape = true;
-		//skeleton2.isWearCape = true;
+		for (int i = 0; i < monsters.Length; i++)
+		{
+			monsters[i].isWearCape = true;
+		}
 
 		Ending_Dead.SetActive(true);
 

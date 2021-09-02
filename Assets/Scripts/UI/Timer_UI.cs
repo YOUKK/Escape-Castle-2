@@ -8,8 +8,20 @@ public class Timer_UI : MonoBehaviour
     [SerializeField] Text minute;
     [SerializeField] Text second;
 
-    [SerializeField] int min;
-    [SerializeField] float sec;
+    int min = 0;
+    float sec = 20f;
+
+    [SerializeField]
+    private GameObject Ending_Dead;
+
+    [SerializeField]
+    MonsterMove flight1;
+    [SerializeField]
+    MonsterMove flight2;
+    [SerializeField]
+    MonsterMove skeleton1;
+    [SerializeField]
+    MonsterMove skeleton2;
 
     void Start()
     {
@@ -30,6 +42,13 @@ public class Timer_UI : MonoBehaviour
             {
                 sec = 0;
                 min = 0;
+
+                flight1.isWearCape = true;
+                //flight2.isWearCape = true;
+                skeleton1.isWearCape = true;
+                //skeleton2.isWearCape = true;
+
+                Ending_Dead.SetActive(true);
             }
         }
         else if (sec > 0)

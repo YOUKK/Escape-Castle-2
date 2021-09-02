@@ -9,9 +9,7 @@ public class UseItem : MonoBehaviour
     [SerializeField]
     private ItemStatus_UI itemUI;
     [SerializeField]
-    private MonsterMove flight;
-    [SerializeField]
-    private MonsterMove skeleton;
+    private MonsterMove[] monsters;
     [SerializeField]
     private KeyPickupAction theKeyPickupAction;
 
@@ -72,15 +70,19 @@ public class UseItem : MonoBehaviour
         Color color = theSpriteRenderer.color;
         color.a = 0.5f;
         theSpriteRenderer.color = color;
-        flight.isWearCape = true;
-        skeleton.isWearCape = true;
+        for(int i = 0; i < monsters.Length; i++)
+		{
+            monsters[i].isWearCape = true;
+		}
 
         yield return new WaitForSeconds(waitTime);
 
         Debug.Log("cape사용이 끝났습니다");
         color.a = 1f;
         theSpriteRenderer.color = color;
-        flight.isWearCape = false;
-        skeleton.isWearCape = false;
+        for (int i = 0; i < monsters.Length; i++)
+        {
+            monsters[i].isWearCape = false;
+        }
     }
 }
