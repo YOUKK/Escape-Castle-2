@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class UseItem : MonoBehaviour
 {
@@ -12,10 +13,17 @@ public class UseItem : MonoBehaviour
     private MonsterMove[] monsters;
     [SerializeField]
     private KeyPickupAction theKeyPickupAction;
+    [SerializeField]
+    private ShortBoardUseText shortBoardUseText;
 
     // 필요한 컴포넌트
     private SpriteRenderer theSpriteRenderer;
     public Image itemImage;
+    [SerializeField]
+    private Tilemap itemUseZone_Ob;
+    [SerializeField]
+    private GameObject shortBoardSprite;
+    
 
     // cape 발동 시간
     //[SerializeField]
@@ -39,24 +47,36 @@ public class UseItem : MonoBehaviour
             // key랑 겹쳐져 있지 않을 때
             if (Input.GetKeyDown(KeyCode.E) && !theKeyPickupAction.pickupActivated)
             {
-                itemImage.gameObject.SetActive(false);
 
                 if (itemUI.item.itemName == "Cape")
                 {
+                    itemImage.gameObject.SetActive(false);
                     Debug.Log("Cape를 사용했습니다");
                     Cape();
                 }
                 else if (itemUI.item.itemName == "Long Board")
                 {
+                    itemImage.gameObject.SetActive(false);
                     Debug.Log("Long Board를 사용했습니다");
                 }
                 else if (itemUI.item.itemName == "Short Board")
                 {
-                    Debug.Log("Short Board를 사용했습니다");
+                    if (shortBoardUseText.isActive)
+                    {
+                        itemImage.gameObject.SetActive(false);
+                        Debug.Log("Short Board를 사용했습니다");
+                        ShortBoard();
+                    }
                 }
             }
 		}
 	}
+
+    private void ShortBoard()
+	{
+        itemUseZone_Ob.GetComponent<TilemapCollider2D>().enabled = false;
+        shortBoardSprite.SetActive(true);
+    }
 
     // cape 아이템 사용
     private void Cape()
