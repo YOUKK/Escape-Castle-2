@@ -31,7 +31,7 @@ public class Ending_Dead : MonoBehaviour
 
 	public void Exit()
 	{
-        Application.Quit();
+		SceneManager.LoadScene("Title");
 	}
 
 	public void Reload()
