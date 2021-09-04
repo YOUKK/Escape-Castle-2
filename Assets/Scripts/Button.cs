@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject RuleUI;
+
     // TitleManager
     public void Play()
     {
@@ -39,4 +42,10 @@ public class Button : MonoBehaviour
 	{
         SceneManager.LoadScene("Ending");
     }
+
+    // Rule Scene
+    public void Continue()
+	{
+        RuleUI.SetActive(false);
+	}
 }
