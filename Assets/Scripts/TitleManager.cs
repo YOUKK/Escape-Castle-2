@@ -14,4 +14,9 @@ public class TitleManager : MonoBehaviour
         Debug.LogError("Game Ended");
         Application.Quit();
     }
+    public void LoadRule()
+    {
+        Debug.Log("Rule");
+        SceneManager.LoadScene("SampleScene");
+    }
 }
