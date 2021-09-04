@@ -45,7 +45,7 @@ public class UseItem : MonoBehaviour
         if(itemUI.item != null)
 		{
             // key랑 겹쳐져 있지 않을 때
-            if (Input.GetKeyDown(KeyCode.E) && !theKeyPickupAction.pickupActivated)
+            if (Input.GetKeyDown(KeyCode.F) && !theKeyPickupAction.pickupActivated)
             {
 
                 if (itemUI.item.itemName == "Cape")
