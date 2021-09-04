@@ -8,8 +8,8 @@ public class Timer_UI : MonoBehaviour
     [SerializeField] Text minute;
     [SerializeField] Text second;
 
-    int min = 5;
-    float sec = 20f;
+    [SerializeField] int min;
+    [SerializeField] float sec;
 
     [SerializeField]
     private GameObject Ending_Dead;
