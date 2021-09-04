@@ -205,9 +205,9 @@ public class PlayerController : MonoBehaviour
 	// 죽음 체크
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (!monsters[0].isWearCape)
+		if (collision.gameObject.tag.Equals("Monster"))
 		{
-			if (collision.gameObject.tag.Equals("Monster"))
+			if (!monsters[0].isWearCape)
 			{
 				isDead = true;
 			}
