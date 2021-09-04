@@ -50,9 +50,12 @@ public class UseItem : MonoBehaviour
 
                 if (itemUI.item.itemName == "Cape")
                 {
-                    itemImage.gameObject.SetActive(false);
-                    Debug.Log("Cape를 사용했습니다");
-                    Cape();
+                    if (itemImage.gameObject.activeInHierarchy)
+                    {
+                        itemImage.gameObject.SetActive(false);
+                        Debug.Log("Cape를 사용했습니다");
+                        Cape();
+                    }
                 }
                 else if (itemUI.item.itemName == "Long Board")
                 {
