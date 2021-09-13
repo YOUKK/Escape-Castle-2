@@ -146,27 +146,57 @@ public class PlayerController : MonoBehaviour
 		theAnimator.SetBool("isRun", false);
 	}
 
+
+	Vector2 moveRight = Vector2.zero;
+	Vector2 moveUp = Vector2.zero;
+
 	// 걷기
 	private void Walk()
 	{
 		if (Input.GetKey(KeyCode.D))
 		{
-			transform.Translate(transform.right * currentSpeed * Time.deltaTime);
+			moveRight = Vector2.right;
+			//transform.Translate(transform.right * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = true;
 		}
+		if (Input.GetKeyUp(KeyCode.D))
+		{
+			moveRight = Vector2.zero;
+		}
+
 		if (Input.GetKey(KeyCode.A))
 		{
-			transform.Translate(transform.right * -1 * currentSpeed * Time.deltaTime);
+			moveRight = Vector2.left;
+			//transform.Translate(transform.right * -1 * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = false;
 		}
+		if (Input.GetKeyUp(KeyCode.A))
+		{
+			moveRight = Vector2.zero;
+		}
+
 		if (Input.GetKey(KeyCode.W))
 		{
-			transform.Translate(transform.up * currentSpeed * Time.deltaTime);
+			moveUp = Vector2.up;
+			//transform.Translate(transform.up * currentSpeed * Time.deltaTime);
 		}
+		if (Input.GetKeyUp(KeyCode.W))
+		{
+			moveUp = Vector2.zero;
+		}
+
 		if (Input.GetKey(KeyCode.S))
 		{
-			transform.Translate(transform.up * -1 * currentSpeed * Time.deltaTime);
+			moveUp = Vector2.down;
+			//transform.Translate(transform.up * -1 * currentSpeed * Time.deltaTime);
 		}
+		if (Input.GetKeyUp(KeyCode.S))
+		{
+			moveUp = Vector2.zero;
+		}
+
+		Vector2 velocity = (moveRight + moveUp).normalized * currentSpeed;
+		transform.Translate(velocity * Time.deltaTime);
 	}
 
 	// 움직임 체크
