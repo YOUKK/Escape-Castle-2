@@ -153,44 +153,44 @@ public class PlayerController : MonoBehaviour
 	// 걷기
 	private void Walk()
 	{
-		if (Input.GetKey(KeyCode.D))
+		if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
 			moveRight = Vector2.right;
 			//transform.Translate(transform.right * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = true;
 		}
-		if (Input.GetKeyUp(KeyCode.D))
+		if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
 		{
 			moveRight = Vector2.zero;
 		}
 
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
 			moveRight = Vector2.left;
 			//transform.Translate(transform.right * -1 * currentSpeed * Time.deltaTime);
 			theSpriteRenderer.flipX = false;
 		}
-		if (Input.GetKeyUp(KeyCode.A))
+		if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
 		{
 			moveRight = Vector2.zero;
 		}
 
-		if (Input.GetKey(KeyCode.W))
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
 		{
 			moveUp = Vector2.up;
 			//transform.Translate(transform.up * currentSpeed * Time.deltaTime);
 		}
-		if (Input.GetKeyUp(KeyCode.W))
+		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
 		{
 			moveUp = Vector2.zero;
 		}
 
-		if (Input.GetKey(KeyCode.S))
+		if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
 		{
 			moveUp = Vector2.down;
 			//transform.Translate(transform.up * -1 * currentSpeed * Time.deltaTime);
 		}
-		if (Input.GetKeyUp(KeyCode.S))
+		if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
 		{
 			moveUp = Vector2.zero;
 		}
